@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TopHeader from './TopHeader'
 import Search from './Search'
+import Filter from './Filter';
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -8,10 +9,11 @@ class Header extends Component {
     }
     render() { 
         return ( 
-            <nav>
+            <header>
      <TopHeader />
      <Search />
-        </nav>
+      <Filter />
+        </header>
          ) }
 }
  

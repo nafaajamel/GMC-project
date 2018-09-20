@@ -30,18 +30,18 @@ export const getCity= ()=>{
 export const category = ()=>{
 
     return[
-        {name:"bricolage",selected:true},
-        {name:"height-tech",selected:true},
-        {name:"agriculture",selected:true},
-        {name:"immobilier",selected:true},
-        {name:"mode et accesoire",selected:true},
-        {name:"gaming",selected:true},
-        {name:"loisir",selected:true},
-        {name:"santé",selected:true},
-        {name:"culture",selected:true},
-        {name:"electronique",selected:true},
-        {name:"mécenique",selected:true},
-        {name:"local",selected:true}
+        {name:"bricolage",selected:false,img:""},
+        {name:"height-tech",selected:false,img:""},
+        {name:"agriculture",selected:false,img:""},
+        {name:"immobilier",selected:false,img:""},
+        {name:"mode et accesoire",selected:false,img:""},
+        {name:"gaming",selected:false,img:""},
+        {name:"loisir",selected:false,img:""},
+        {name:"santé",selected:false,img:""},
+        {name:"culture",selected:false,img:""},
+        {name:"electronique",selected:false,img:""},
+        {name:"mécenique",selected:false,img:""},
+        {name:"local",selected:false,img:""}
     ]
 }
 

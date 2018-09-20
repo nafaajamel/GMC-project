@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Category from './Componenets/Category/Category'
 // import css file
 
 import './App.css';
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
    <Header />
-  
+  <Category />
       </div>
     );
   }
