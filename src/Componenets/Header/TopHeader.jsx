@@ -6,12 +6,13 @@ class TopHEader extends Component {
         return (  
 
             <div className="top-nav">
-            <div className="nav-desc">Toutes les annonces de location dans votre région</div>
             
+            <div className="brand-nav">LOGO</div>
             <ul className="nav-menu">
-                <li className="nav-menu-item"> <a href="#">login</a></li>
+            <li className="nav-menu-item"> <a href="#">mes favoris ( 0 )</a></li>
                 <li className="nav-menu-item"> |</li>
-                <li className="nav-menu-item"><a href="#">sign up</a></li>
+                <li className="nav-menu-item"> <a href="#">login / sign in</a></li>
+               
             </ul>
            
                </div>

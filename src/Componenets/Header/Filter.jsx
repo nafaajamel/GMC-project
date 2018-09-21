@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 class Filter extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+       
     }
 
 
@@ -30,17 +30,19 @@ class Filter extends Component {
  
 
 const mapStateToProps = ({category}) =>{
+   
     return{
 category,
+
     }
 }
 const mapDispatchToProps = dispatch =>{
     return{
-        setCategory: ({name,selected})=>{
+        setCategory: ({name,selected,img})=>{
            selected = ! selected
             dispatch({
                 type:'UPDATE_ON_CATEGORY',
-                category:{name,selected}
+                category:{name,selected,img}
             })
         }
 

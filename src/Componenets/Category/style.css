@@ -11,21 +11,22 @@
      padding: 5%
 }
 .category-element{
-    width:200px;
-    height:200px;
-  
+    width:25%;
+ margin: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  cursor: pointer;
 }
 
 
 .category-img{
     font-size:60px;
-    color:#55AAE2;
+    color:#24BD77;
     font-weight: bold;
 padding:40px;
+margin:10px;
 border-radius: 50%;
 border: 2px solid #55AAE2;
 background: white;
@@ -42,11 +43,19 @@ color:rgb(80, 80, 80);
 .category-element:hover >.category-img{
     background:#55AAE2;
     color:white;
-    
+    transition: .5s all ease-in-out;
 }  
 .category-element:hover>.category-title{
   color:#55AAE2;
 }
 
-
+.select> .category-img{
+    color:white;
+    background: #55AAE2;
+    border:3px solid #24BD77;
+    transition: .5s all ease-in-out;
+}
+.select>.category-title{
+    color:#55AAE2;
+  }
 

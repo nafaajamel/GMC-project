@@ -30,18 +30,17 @@ export const getCity= ()=>{
 export const category = ()=>{
 
     return[
-        {name:"bricolage",selected:false,img:""},
-        {name:"height-tech",selected:false,img:""},
-        {name:"agriculture",selected:false,img:""},
-        {name:"immobilier",selected:false,img:""},
-        {name:"mode et accesoire",selected:false,img:""},
-        {name:"gaming",selected:false,img:""},
-        {name:"loisir",selected:false,img:""},
-        {name:"santé",selected:false,img:""},
-        {name:"culture",selected:false,img:""},
-        {name:"electronique",selected:false,img:""},
-        {name:"mécenique",selected:false,img:""},
-        {name:"local",selected:false,img:""}
+        {name:"bricolage",selected:false,img:"fa fa-wrench"},
+        {name:"electronique",selected:false,img:"fa fa-camera"},
+        {name:"logistique",selected:false,  img:"fa fa-truck"},
+        {name:"immobilier",selected:false,img:"fas fa-home"},
+        {name:"mode et accesoire",selected:false,img:"fa fa-tags"},
+        {name:"gaming",selected:false,img:"fa fa-gamepad"},
+        {name:"loisir",selected:false,img:"fa fa-parachute-box"},
+        {name:"culture",selected:false,img:"fa fa-book"},
+   
+        {name:"véhicule",selected:false,img:"fa fa-car"}
+       
     ]
 }
 

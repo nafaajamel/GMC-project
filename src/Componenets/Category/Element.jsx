@@ -1,13 +1,17 @@
 
 import React from 'react';
 
-const Element = () => {
+const Element = ({category,click}) => {
+
     return (
-        <div className="category-element">
+        <div 
+        onClick={()=>click(category)}
+        className={category.selected?"category-element select":"category-element"}>
             <div className="category-img">
-          <i className="fa fa-camera"></i>
+            
+          <i className={category.img}></i>
             </div>
-            <div className="category-title">height-tech</div>
+            <div className="category-title">{category.name}</div>
         </div>
     );
 }

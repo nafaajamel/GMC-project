@@ -8,6 +8,7 @@ switch(action.type){
     return state.map(x=>x.name===action.category.name?action.category:x)
     case 'UPDATE_ALL_CATEGORY':
     return action.category
+    
     default:
     return state
 }

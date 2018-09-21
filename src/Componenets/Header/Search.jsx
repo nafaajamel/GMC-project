@@ -31,8 +31,9 @@ class Search extends Component {
     render() { 
         return (
             <div className="navbar">
-            <div className="brand-nav">LOGO</div>
+           
             <div className="filter-nav">
+           
               <div className="autocomplet">
              <input value={this.props.searchByCity} type="text" className="ou"
               onChange={(e)=>this.autocomplet(e.target.value)} placeholder="Ou ?"/>
