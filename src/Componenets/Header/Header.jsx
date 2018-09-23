@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import TopHeader from './TopHeader'
 import Search from './Search'
-import Filter from './Filter';
+
 class Header extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {}
     }
-    render() { 
-        return ( 
+    render() {
+        return (
             <header>
-     <TopHeader />
-     <Search />
-      <Filter />
-        </header>
-         ) }
+                {/* <TopHeader /> */}
+                <Search />
+
+            </header>
+        )
+    }
 }
- 
+
 export default Header;

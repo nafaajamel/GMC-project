@@ -8,7 +8,7 @@ switch(action.type){
     case "SET_ADSCITY":
     return action.city
    default :
-return initState
+return state
 } 
 
 }

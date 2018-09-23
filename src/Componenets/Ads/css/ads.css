@@ -1,0 +1,196 @@
+.ad-list {
+  width: 80%;
+  display: flex;
+  margin: 10px auto 30px auto;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding-left: 10%;
+}
+.ads {
+  width: 25%;
+  height: 300px;
+  border: 1px solid rgb(221, 220, 220);
+  box-shadow: 0 0 10px rgb(218, 216, 216);
+  padding: 0;
+  margin: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: white;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.red {
+  color: red !important ;
+  
+}
+
+
+.ads:hover {
+  transform: scale(1.1);
+  transition: all 0.4s ease-in;
+  box-shadow: 0 0 15px rgb(170, 167, 167);
+}
+.ads-img {
+  width: 96%;
+  height: 96%;
+  z-index: -1;
+  top: 2%;
+  left: 2%;
+  position: absolute;
+  display: block;
+  cursor: auto;
+}
+.fav-icon {
+  color: rgb(110, 109, 109);
+  z-index: 99;
+  position: absolute;
+  top: 5%;
+  left: 88%;
+  font-size: 18px;
+}
+.red::after{
+  animation: fly .5s ease-out ;
+  content: '\f004';
+  font-family: 'Font Awesome 5 free';
+  position:absolute;
+left:0
+}
+@keyframes fly{
+  
+  to
+  {
+opacity: 0;
+transform: translateX(60px) translateY(-60px)
+  }
+
+}
+
+.img-container {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  height: 70%;
+  padding: 0;
+}
+.ad-foot {
+  padding: 0 10px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-top {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+.sort {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(70, 69, 69);
+}
+.sort-list {
+  height: 30px;
+  background: white;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.home-title {
+  color: gray;
+  display: block;
+  padding-left: 20%;
+  width: 60%;
+}
+.home-title span {
+  color: rgb(70, 69, 69);
+  text-decoration: underline;
+}
+
+.ad-name,
+.ad-price {
+  color: rgb(92, 91, 91);
+}
+.ad-city,
+.ad-dispo {
+  color: rgb(117, 116, 116);
+  font-size: 14px;
+}
+.ad-city::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f3c5";
+  margin: 0 5px;
+}
+.enable {
+  color: #24bd77;
+}
+.disable {
+  color: rgb(247, 16, 16);
+}
+.ad-price span {
+  font-size: 14px;
+  color: rgb(141, 139, 139);
+}
+
+.ad-foot-right,
+.ad-foot-left {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+}
+
+/* user list */
+.user-menu {
+  list-style: none;
+  position: absolute;
+  height: 0;
+  background: #ffffff;
+  width: 150px;
+  padding: 0;
+  margin: 0;
+
+  box-shadow: 0 4px 15px -3px gray;
+  left: -50px;
+  top: 54px;
+  overflow: hidden;
+  height: 0;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  z-index: 99;
+}
+.user-menu li {
+  background: white;
+  color: rgb(114, 113, 113);
+  padding: 10px;
+  border-bottom: 2px solid rgb(182, 182, 182);
+}
+.user-menu li i {
+  position: relative;
+  left: 0;
+  margin-right: 10px;
+}
+
+.d-d-u:hover ~ .user-menu,
+.user-menu:hover {
+  height: 80px;
+  border: 1px solid rgb(182, 181, 181);
+}
+
+.user-menu li:hover {
+  background: rgb(222, 232, 243);
+}
+
+.user-menu li:last-child {
+  border: none;
+}
+.drop-user-menu {
+  height: auto;
+}
