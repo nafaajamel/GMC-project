@@ -52,7 +52,7 @@ if(this.state.active===0){
         return (
             <div className="slider-container">
                 <div className="slider">
-                    <i id='prev' className="fa fa-chevron-left"
+                    <i id='prev' className="fa fa-chevron-left slide-arrow-left slide-arrow"
                     onClick={(e)=>this.nextOrPrev(e.target.id)}
                     ></i>
                     <img
@@ -63,7 +63,7 @@ if(this.state.active===0){
                     <i 
                     id='next'
                     onClick={(e)=>this.nextOrPrev(e.target.id)}
-                    className="fa fa-chevron-right"></i>
+                    className="fa fa-chevron-right slide-arrow slide-arrow-right"></i>
                 </div>
                 <div className="slider-foot">
                    {this.state.images.map((x,i)=>{

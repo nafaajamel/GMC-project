@@ -3,8 +3,8 @@
 const Fav = (state=[],action) =>{
 
 if(action.type==="ADD_FAV"){
-  if(state.includes(action.fav)){
-      return state.filter(x=>x!==action.fav)
+  if(state.find(x=>x.name === action.fav.name)){
+      return state.filter(x=>x.name !==action.fav.name)
   }else{
       return [...state,action.fav]
   }

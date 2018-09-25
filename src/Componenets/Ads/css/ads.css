@@ -1,24 +1,27 @@
 .ad-list {
-  width: 80%;
+  width: 100%;
   display: flex;
-  margin: 10px auto 30px auto;
+  flex-direction: row;
+  margin: 10px 0 30px 0;
   flex-flow: row wrap;
-  justify-content: center;
-  padding-left: 10%;
+ 
+  justify-content: flex-start;
+
 }
 .ads {
-  width: 25%;
+  width: 27%;
   height: 300px;
   border: 1px solid rgb(221, 220, 220);
   box-shadow: 0 0 10px rgb(218, 216, 216);
   padding: 0;
-  margin: 20px 20px;
+  margin: 20px 30px;
   display: flex;
   flex-direction: column;
   position: relative;
   background: white;
   justify-content: space-between;
   cursor: pointer;
+  z-index: 1;
   transition: all 0.5s ease;
 }
 .red {
@@ -83,11 +86,12 @@ transform: translateX(60px) translateY(-60px)
 }
 
 .home-top {
-  width: 95%;
+  width: 91%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
+ 
 }
 .sort {
   display: flex;
@@ -105,8 +109,7 @@ transform: translateX(60px) translateY(-60px)
 
 .home-title {
   color: gray;
-  display: block;
-  padding-left: 20%;
+  
   width: 60%;
 }
 .home-title span {
@@ -193,4 +196,11 @@ transform: translateX(60px) translateY(-60px)
 }
 .drop-user-menu {
   height: auto;
+}
+.link{
+  text-decoration: none;
+ 
+  color:inherit;
+ 
+  
 }

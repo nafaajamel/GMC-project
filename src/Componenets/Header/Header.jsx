@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TopHeader from './TopHeader'
 import Search from './Search'
-
+import Form from '../Form/Form'
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -10,7 +10,7 @@ class Header extends Component {
     render() {
         return (
             <header>
-                {/* <TopHeader /> */}
+                <Form />
                 <Search />
 
             </header>

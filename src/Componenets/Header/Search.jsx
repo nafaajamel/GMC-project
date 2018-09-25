@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
+import {Link} from 'react-router-dom'
 import { getCity } from '../Constants/data';
 import UserMenu from './UserMenu';
 class Search extends Component {
@@ -32,7 +32,9 @@ class Search extends Component {
     render() {
         return (
             <div className="navbar">
+            <Link to="/home">
                 <div className="brand-nav">LOGO</div>
+                </Link>
                 <div className="filter-nav">
 
                     <div className="autocomplet">

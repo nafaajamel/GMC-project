@@ -1,6 +1,6 @@
 .ad-info {
   background: #f0f0f0;
-  padding: 5% 3%;
+  padding: 2% 3%;
   width: 94%;
 }
 
@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: flex-start;
   height: 60px;
-  padding: 30px 3%;
+  padding: 20px 3%;
 }
 .ad-title-right p {
   color: rgb(68, 67, 67);
@@ -29,7 +29,7 @@
   justify-content: space-between;
   flex-flow: row nowrap;
   align-items: flex-start;
-  margin: 30px auto;
+  margin: 20px auto;
 }
 .ad-data {
   width: 50%;
@@ -58,8 +58,8 @@
   width: 100%;
   padding: 1%;
 }
-.fa-chevron-left,
-.fa-chevron-right {
+.slide-arrow,
+.slide-arrow {
   position: absolute;
   color: rgba(255, 255, 255, 0.9);
   font-size: 70px;
@@ -70,17 +70,17 @@
   transition: all 0.5s ease;
 }
 
-.fa-chevron-left:hover,
-.fa-chevron-right:hover {
+.slide-arrow:hover,
+.slide-arrow:hover {
   transform: scale(1.2);
   color: white;
 }
 
-.fa-chevron-left {
+.slide-arrow-lzft {
   float: left;
   left: 10px;
 }
-.fa-chevron-right {
+.slide-arrow-right {
   float: right;
   right: 0;
 }

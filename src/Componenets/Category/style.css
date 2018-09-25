@@ -2,17 +2,18 @@
 
 .category-container{
     width:90%;
-    background: #FBFBFB;
+    background: rgb(248, 248, 248);
     margin:  auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-     height: 100vh;
+     height: 90vh;
      padding: 5%
 }
 .category-element{
-    width:25%;
- margin: 20px 0;
+    width:20%;
+    height:200px;
+ margin: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,3 +60,27 @@ color:rgb(80, 80, 80);
     color:#55AAE2;
   }
 
+  .go-to{
+      position: fixed;
+      background: #24BD77;
+      color:white;
+      width:100px;
+      line-height: 50px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 22px;
+      right:30px;
+      bottom:50px;
+      cursor: pointer;
+
+  }
+  .go-to:hover{
+      background: #55AAE2;
+  }
+  .category-header{
+      font-size:26px;
+      color:rgb(66, 66, 66);
+text-align: center;
+width:100%;
+font-weight: bold;
+  }
