@@ -19,7 +19,7 @@ class Ad extends Component {
           />
           <img
             className="ads-img"
-            src={'http://localhost:5000/upload/'+ this.props.ad.img}
+            src={'http://localhost:5000/upload/'+ this.props.ad.img[0] }
             alt={this.props.ad.title}
           />
         </div>
@@ -27,7 +27,7 @@ class Ad extends Component {
         
           <div className="ad-foot-left">
           <Link className="link" to={`./info/${this.props.ad._id}`}>
-            <b className="ad-name">{this.props.ad.title}</b></Link>
+            <b className="ad-name">{this.props.ad.title.slice(0,15)+'...'}</b></Link>
             <p className="ad-city">{this.props.ad.city}</p>
           </div>
           <div className="ad-foot-right">
@@ -62,10 +62,10 @@ const state = ({ Fav }) => {
 };
 const dispatch = dispatch => {
   return {
-    addFav: ({title,img,unity,price,city}) => {
+    addFav: ({isAvaible,title,img,unity,price,city}) => {
       dispatch({
         type: "ADD_FAV",
-        fav:{title,img,unity,price,city}
+        fav:{isAvaible,title,img,unity,price,city}
       });
     }
   };

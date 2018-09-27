@@ -33,7 +33,7 @@ const Router = () => {
        />
 
        <Route
-         exact
+        
          path="/home"
          render={() => <Client content={<Home />} />}
        />

@@ -21,7 +21,8 @@ class AdArray extends Component {
       img:[],
       images:[],
       category:'',
-      isAvaible:true
+      isAvaible:true,
+      adList:[]
     };
   }
 
@@ -40,39 +41,80 @@ class AdArray extends Component {
     img:[],
     category:'',
     isAvaible:true,
-    adList:[]
+   
 
    })
   }
+
+  getAd = (val) =>{
+ 
   
-componentDidMount(){
+    axios.post('/user/ad',{val}).then(res=>{
+      this.setState({
+        adList: [... res.data]
+      })
+    })
+  }
+  owner ={}
+  componentDidMount() {
+    
+this.props.owner.then(x=>{
   this.setState({
-    owner: Object.assign({},this.props.owner)
+    owner: Object.assign({},x)
   })
-
-
+ this.owner = x
+  this.getAd(x)  
   
-}
+})
+  }
+
 
 addElement = () =>{
-const {title,city,price,img,unity,description,category,isAvaible } = this.state
-const owner = Object.assign({},this.state.owner)
- 
-axios.post('/ads/add',{title,city,price,img,unity,description,category,isAvaible,owner}).then((res)=>{
 
+  const {title,city,price,img,unity,description,category,isAvaible,owner } = this.state
+  
+  if(this.state.addOrSave==='ajouter'){
+
+axios.post('/ads/add',{title,city,price,img,unity,description,category,isAvaible,owner}).then((res)=>{
+this.getAd(this.owner)
 
 } )
 .catch(err=>console.log(err) )
 this.initState()
 
+  }else{
+    
+axios.put('/ad/update/'+this.state._id,{title,city,price,img,unity,description,category,isAvaible}).then(res=>{
+  
+ this.setState({
+   adList:[...this.state.adList,res.data]
+ })
+  this.initState()
+  }
+)
+.catch(err=>console.log(err))
+
+
   }
 
-  edit = () => {
+
+}
+
+  edit = ({title,city,price,img,unity,description,category,isAvaible,_id}) => {
     this.setState({
       toggleForm: true,
       addOrSave: "edit",
-    
+      title,city,
+      price,
+      images: img.map(x=>x = 'http://localhost:5000/upload/'+x),
+      unity,
+      description,
+      _id,
+      category,
+      isAvaible,
+      img,
     });
+   
   };
 
   uploadImg(e) {
@@ -86,8 +128,7 @@ this.initState()
     this.setState({
       img:  [...this.state.img,file.name ]
     })
-   console.log(file)
-
+   
     let reader = new FileReader();
     
     
@@ -109,6 +150,15 @@ this.initState()
        [e.id]:e.value
      })
   }
+
+remove = (x)=>{
+  
+    if(window.confirm('supprimer annonce ?')) axios.delete('/ad/delete/'+x).then(res=>{
+  alert('annonce supprimer')
+  this.getAd(this.owner)
+})
+}
+
 
   render() {
     return (
@@ -270,29 +320,38 @@ this.initState()
                 <td>prix</td>
                 <td>unité</td>
                 <td>disponible</td>
+                <td>ville</td>
                 <td>action</td>
               </tr>
-              <tr>
-              <td>images</td>
-                <td>categorie</td>
-                <td>prix</td>
-                <td>unité</td>
-                <td>disponible</td>
-                <td>action</td>
+              
+                {this.state.adList.map(x=>{
+                  return  <tr>
+                     <td>{x.title.slice(0,8).padEnd(11,'.') }</td>
+                <td>{x.img.length}</td>
+                <td>{x.category }</td>
+                <td>{x.price}</td>
+                <td>{x.unity}</td>
+                <td>{x.city}</td>
+                <td>{x.isAvaible}</td>
                 <td>
-                  <button class="edit">
-                    {" "}
+
+                    <button class="edit">
+                   
                     <i
-                      onClick={() => this.edit()}
+                      onClick={() => this.edit(x)}
                       className="fa fa-edit"
                     />{" "}
                   </button>
-                  <button class="remove">
-                    {" "}
+                  <button class="remove"
+                   onClick={()=>this.remove(x._id)}
+                  >
+                   
                     <i className="fa fa-trash" />
                   </button>
                 </td>
-              </tr>
+                  </tr>
+                })}
+             
             </table>
           </div>
         </div>
@@ -303,7 +362,9 @@ this.initState()
 
 const state = ({Login})=>{
   return{
-    owner:Login
+    owner: new Promise((resolve,reject)=>{
+      resolve(Login)
+    } )
   }
 }
 

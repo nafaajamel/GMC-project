@@ -5,14 +5,15 @@ import {category} from './Componenets/Constants/data'
 import Fav from './Reducer/Favoris'
 import Modal from './Reducer/ModalReducer'
 import UserReducer from './Reducer/UserReducer'
-
+import Ads from './Reducer/Ads'
 const store = createStore(combineReducers({
     searchByCity,
     searchByName,
     category:CategoryReducer,
     Fav,
     isOpen:Modal,
-    Login:UserReducer
+    Login:UserReducer,
+    AdList:Ads
   
 }))
 
@@ -27,5 +28,4 @@ store.dispatch({
 //     type:'SET_LOGIN',
 //     user:{fullName:'jamel',_id:'dfdlfkl'}
 // })
-
 

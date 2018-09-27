@@ -96,10 +96,10 @@ const state =state =>{
 }
 const dispatch= dispatch =>{
   return{
-    setUser: ({fullName,email,password,phone})=>{
+    setUser: ({_id,fullName,email,password,phone})=>{
         dispatch({
           type:'SET_LOGIN',
-          user:{fullName,email,password,phone}
+          user:{_id,fullName,email,password,phone}
         })
         dispatch({type:'SET_MODAL'})
         

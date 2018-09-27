@@ -3,11 +3,17 @@ import {connect} from 'react-redux'
 import Element from './Element';
 import {Link} from 'react-router-dom'
 import './style.css'
+import axios from 'axios'
+
 class Category extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
+
+
+
+
     render() { 
         return ( 
 <div className="category-container">
@@ -33,12 +39,12 @@ category,
 }
 const dispatch = dispatch =>{
 return{
-addCategory:({name,selected,img})=>{
-    selected = ! selected
+addCategory:(category)=>{
+    category.selected = ! category.selected
    
 dispatch({
     type:"UPDATE_ON_CATEGORY",
-    category:{name,selected,img}
+    category,
 })
 }
 }

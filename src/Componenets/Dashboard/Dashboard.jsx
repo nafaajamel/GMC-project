@@ -9,6 +9,8 @@ class Dashboard extends Component {
     super(props);
     this.state = {};
   }
+
+
   render() {
     return (
       <div className="dashboard">
@@ -33,12 +35,15 @@ class Dashboard extends Component {
               <i class="fas fa-angle-right" />
             </li>
             <Link to="/dashboard/users" >
+
+            {this.props.owner.profil==='admin'?
             <li className="side-item">
             
               <i className="fa fa-user" /> utilisateurs
               <i class="fas fa-angle-right" />
              
             </li>
+            :false}
             </Link>
             <Link to="/dashboard/ads" >
             <li className="side-item">
@@ -76,7 +81,8 @@ class Dashboard extends Component {
 
 const state = state =>{
   return {
-    login: state.Login?true:false
+    login: state.Login?true:false,
+    owner:state.Login
   }
 }
 const dispatch = dispatch =>{

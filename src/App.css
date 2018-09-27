@@ -59,10 +59,19 @@ font-size:16px;
   justify-content: space-between;
   align-items: center;
 }
+.brand-nav::first-letter{
+  color:#24BD77;;
+  font-size: 36px;
+}
 .brand-nav{
   width:50px;
-padding-left:60px;
+padding-left:40px;
+font-weight: bold;
+color:gray;
+font-size:30px;
+
 }
+
 .nav-bar a{
   text-decoration: none;
   text-decoration: none

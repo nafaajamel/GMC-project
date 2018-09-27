@@ -104,11 +104,33 @@ app.post('/users/add',(req,res)=>{
 
 
     createUser(req.body.user).then((data)=>{
-        console.log(data)
+        
         res.send(data)
         
     })})
 
+    app.post('/user/ad',(req,res)=>{
+
+        let owner = req.body.val
+        
+        Ad.find({'owner._id':owner._id}).then(data=>{
+           res.send(data)
+        })
+        
+    })
+    app.put('/ad/update/:ad',(req,res)=>{
+ 
+    let {ad} = req.params
+
+
+ let a = req.body
+  Ad.findByIdAndUpdate(ad, a,(err,data)=>{
+      console.log(data)
+    res.send(data)
+
+  })
+
+    })
 
 
 app.get('/ads',(req,res)=>{
@@ -146,9 +168,51 @@ app.post('/ads/add',upload.single('img') ,(req,res)=>{
     createAd(req.body).then(data=>{
         res.send(data)
     })
+})
+
+app.delete('/ad/delete/:id',(req,res)=>{
+    let id= req.params.id
+    Ad.findByIdAndDelete(mongoose.Types.ObjectId(id)).then(data=>{
+        console.log(data)
+        res.send('ok')
+    })
+})
+
+app.get('/search/:city/:search/:category',(req,res)=>{
+
+    let search = req.params.search
+    let city = req.params.city
+    let category = req.params.category
+   
+if(search=='all'&& city=='all'){
+
+
+    getAds().then((data)=>{
+        res.send(data)
+})
+    
+}else{
+if(city==='all'){
+    Ad.find({title:new RegExp('.*'+search+'.*', "i")}).then(data=>{
+        res.send(data)
+    })
+}
+if(search=== 'all'){
+
+    Ad.find({city:city}).then(data=>{
+        res.send(data)
+    })
+}
+if(search!=='all' && city!=='all'){
+
+Ad.find({title:new RegExp('.*'+search+'.*', "i")}).and([{city:city}]).then(data=>{
+    res.send(data)
+})
+}}
 
 
 })
+
 
 app.listen(5000,(err)=>{
     err ? console.log('errr'):console.log('runn')

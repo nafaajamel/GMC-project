@@ -17,14 +17,33 @@ componentDidMount() {
     this.setState({
       listAds:res.data
   })
-  console.log(res.data)
+  
   })
+   
     
 }
 
+componentDidUpdate(prevProps) {
+ 
+  if (this.props.adList.length !== prevProps.adList.length) {
+    this.setState({
+         listAds:[...this.props.adList]
+        })
+  }
+}
+
+// componentWillReceiveProps(){
+  
+//  this.setState({
+//     listAds:[...this.props.adList]
+//   })
+
+
+// }
   render() {
     return (
       <div className="home">
+    
         <div className="home-top">
           <h4 className="home-title">
            <b style={{color:'rgba(0,0,0,0.8)'}}>{this.state.listAds.length}</b> annonces de location de :{" "}
@@ -62,11 +81,15 @@ componentDidMount() {
     );
   }
 }
-const state = ({ searchByCity, category }) => {
+const state = ({AdList, searchByCity, category }) => {
+  console.log('redux',AdList)
   return {
     searchByCity: searchByCity ? searchByCity : "toutes la tunisie",
-    category: category.filter(x => x.selected)
+    category: category.filter(x => x.selected),
+    adList:[...AdList]
+    
   };
+  
 };
 
 export default connect(state)(List);
