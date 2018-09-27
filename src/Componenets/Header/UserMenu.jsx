@@ -8,19 +8,28 @@ class UserMenu extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            login:false
-           
-        }
+            login:false,
+            
+       }
     }
+
+   
+   componentDidMount(){
+       
+       
+      console.log(this.props.isLogin)
+    }
+   
+    
+  
     render() { 
+        
         return (
-
+         
             <ul className="user-menu">
-                
-              
-
-                {this.state.login ===true? 
-                <li className="user-item"><i className="fa fa-cog"></i> mon compte</li>
+                {this.props.isLogin? 
+                <Link to='/dashboard'>
+                <li className="user-item"><i className="fa fa-cog"></i> mon compte</li></Link>
                 :<li className="user-item"
                 onClick={()=> this.props.openModal()}
                 ><i className="fa fa-lock"></i>se connecter</li>
@@ -36,9 +45,10 @@ class UserMenu extends Component {
     }
 }
  
-const state = ({Fav})=>{
+const state = ({Fav,Login})=>{
     return{
         fav:Fav.length,
+        isLogin: Login
 
     }
 }

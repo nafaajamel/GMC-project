@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Ad from "./Ad";
 import { connect } from "react-redux";
-
+import axios from 'axios'
 class List extends Component {
   constructor(props) {
     super(props);
@@ -9,18 +9,17 @@ class List extends Component {
       listAds: []
     };
   }
-list = [
-    {name:'motor', city:'tataouine', price:'150',pu:'mois',dispo:true ,img:'http://www.moto-journal.fr/wp-content/uploads/2018/09/template-facebook-21-672x440.jpg'},
-    {name:'motor2', city:'dfldf', price:'10',pu:'an',dispo:false,img:'https://img1.leboncoin.fr/ad-image/5dc20b718203f8afdce515a3f6bdead2165decb0.jpg'},
-    {name:'motor3', city:'jdfd', price:'1560',pu:'mois',dispo:false ,img:'https://www.moto-plaisir.fr/487-tm_thickbox_default/f750gs-location-moto-bmw-.jpg'},
-    {name:'motor4', city:'tataone', price:'350',pu:'mois',dispo:true ,img: 'http://www.moto-net.com/sites/default/files/sbk-mondial-moto_s.jpg'}
-    
-]
+
 
 componentDidMount() {
+
+  axios.get('/ads').then(res=>{
     this.setState({
-        listAds:this.list
-    })
+      listAds:res.data
+  })
+  console.log(res.data)
+  })
+    
 }
 
   render() {
@@ -51,7 +50,7 @@ componentDidMount() {
         <div className="ad-list">
   {this.state.listAds.map(x=>{
       return <Ad
-      key={x.name}
+      key={x._id}
        ad={x}
       
       />

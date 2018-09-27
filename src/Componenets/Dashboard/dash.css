@@ -269,7 +269,7 @@ line-height: 45px;
 .cancel{
     background: rgb(201, 200, 199);
 }
-.insert-form input{
+.insert-form input, textarea{
 
     height:25px;
     width:50%;
@@ -282,6 +282,12 @@ line-height: 45px;
     padding:0 10px;
     margin-right: 0;
     font-size:16px
+}
+textarea{
+    resize: none;
+    height: 60px;
+    font-size: 16px;
+  
 }
 .add-form{
     
@@ -299,7 +305,7 @@ height:400px;
 transition: all 1s ease;
 }
 .show-form-ad{
-    height:450px;
+    height:600px;
     transition: all 1s ease;
     }
 .tooltip{
@@ -315,5 +321,14 @@ input#img:hover ~ .tooltip{
 visibility: visible;
 background: rgba(0,0,0,0.7);
 color:white;
+
+}
+.img-prev{
+    position: absolute;
+    
+    float: right;
+    width:200px;
+    display: flex;
+  right:-250px;
 
 }

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import {Link,Route} from 'react-router-dom'
 import UserArray from './UserArray';
 import AdArray from './AdArray'
+import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -10,9 +12,10 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
+      {this.props.login?false:<Redirect to="/home" />}
         <div className="dash-side">
           <div className="side-brand">
-          <Link to="./home"> 
+          <Link to="/home"> 
           Logo
           </Link>
         
@@ -56,7 +59,9 @@ class Dashboard extends Component {
            <i className="fa fa-user d-u-m d-d-u"></i>
            <u className="user-menu">
                <li className="user-item "> <b className="u-i-d">mon compte</b></li>
-               <li className="user-item"><b className="u-i-d">déconnecter</b></li>
+               <li className="user-item" 
+               onClick={()=>this.props.logOut()}
+               ><b className="u-i-d">déconnecter</b></li>
            </u>
           </div>
           </div>
@@ -69,4 +74,21 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const state = state =>{
+  return {
+    login: state.Login?true:false
+  }
+}
+const dispatch = dispatch =>{
+  return{
+    logOut:()=>{
+      dispatch({
+        type:'INIT_LOGIN',
+      })
+     
+    }
+  }
+}
+
+
+export default connect(state,dispatch)(Dashboard);

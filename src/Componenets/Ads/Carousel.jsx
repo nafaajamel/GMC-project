@@ -7,28 +7,23 @@ class Carousel extends Component {
         super(props);
         this.state = {
             active:0,
-            images:[],
+           
 
         }
     }
   
     componentDidMount(){
-        this.list = [
-            'http://www.moto-journal.fr/wp-content/uploads/2018/09/template-facebook-21-672x440.jpg',
-           'https://img1.leboncoin.fr/ad-image/5dc20b718203f8afdce515a3f6bdead2165decb0.jpg',
-            'https://www.moto-plaisir.fr/487-tm_thickbox_default/f750gs-location-moto-bmw-.jpg',
-           'http://www.moto-net.com/sites/default/files/sbk-mondial-moto_s.jpg'
-  
-        ]
+      
+      console.log('sds',this.props.galery)
         this.setState({
             active:0,
-            images:this.list
+           
         })
     }
     nextOrPrev = (e)=>{
 if(e==="next"){
    
-if(this.state.active<this.state.images.length -1){
+if(this.state.active<this.props.galery.length -1){
     this.setState({active:this.state.active+1})
 }else{
     this.setState({
@@ -40,7 +35,7 @@ return
 }
 if(this.state.active===0){
     this.setState({
-        active:this.state.images.length -1
+        active:this.props.galery.length -1
     })
 }else{
     this.setState({
@@ -57,7 +52,7 @@ if(this.state.active===0){
                     ></i>
                     <img
                         className="slider-img"
-                        src={this.state.images[this.state.active]}
+                        src={'http://localhost:5000/upload/'+ this.props.galery[this.state.active]}
                         alt=""
                     />
                     <i 
@@ -66,10 +61,10 @@ if(this.state.active===0){
                     className="fa fa-chevron-right slide-arrow slide-arrow-right"></i>
                 </div>
                 <div className="slider-foot">
-                   {this.state.images.map((x,i)=>{
+                   {this.props.galery.map((x,i)=>{
                        return  <img
                        className =  { this.state.active ==i ? "img-item img-hover":"img-item"}
-                       src= {x}
+                       src= {'http://localhost:5000/upload/'+x}
                        alt=""
                        onClick={()=>this.setState({active:i})}
                    />

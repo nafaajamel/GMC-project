@@ -56,8 +56,9 @@ class Search extends Component {
                     <button className="btn-search"> <i className="fa fa-search"></i> </button>
                 </div>
                 <div className="dispose-nav">
-
+                         <Link to="/dashboard/ads">
                     <button className="dispose-btn"  >déposer annonce</button>
+                         </Link>
                     <div style={{ position: "relative" }}>
                         <i className="fa fa-user usr-menu-icon d-d-u"></i>
                         <UserMenu />
@@ -71,7 +72,8 @@ class Search extends Component {
 const mapStateToProps = state => {
     return {
         searchByName: state.searchByName,
-        searchByCity: state.searchByCity
+        searchByCity: state.searchByCity,
+        
     }
 
 }

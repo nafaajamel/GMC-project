@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {Link} from 'react-router-dom'
-import AdInfo from './AdsInfo'
+
 class Ad extends Component {
   constructor(props) {
     super(props);
@@ -12,30 +12,30 @@ class Ad extends Component {
       <div className="ads">
         <div className="img-container">
           <i
-            className={this.props.class(this.props.ad.name)}
+            className={this.props.class(this.props.ad.title)}
             onClick={() => {
               this.props.addFav(this.props.ad);
             }}
           />
           <img
             className="ads-img"
-            src={this.props.ad.img}
-            alt=""
+            src={'http://localhost:5000/upload/'+ this.props.ad.img}
+            alt={this.props.ad.title}
           />
         </div>
         <div className="ad-foot">
         
           <div className="ad-foot-left">
-          <Link className="link" to={`./info/${this.props.ad.name}`}>
-            <b className="ad-name">{this.props.ad.name}</b></Link>
+          <Link className="link" to={`./info/${this.props.ad._id}`}>
+            <b className="ad-name">{this.props.ad.title}</b></Link>
             <p className="ad-city">{this.props.ad.city}</p>
           </div>
           <div className="ad-foot-right">
             <b className="ad-price">
-              {this.props.ad.price} dt /<span> {this.props.ad.pu}</span>
+              {this.props.ad.price} dt /<span> {this.props.ad.unity}</span>
             </b>
            
-             {this.props.ad.dispo? <p className="ad-dispo enable">
+             {this.props.ad.isAvaible? <p className="ad-dispo enable">
             <i className="fa fa-check" /> disponible
             </p> :
              <p className="ad-dispo disable">
@@ -51,21 +51,21 @@ class Ad extends Component {
 }
 
 const state = ({ Fav }) => {
-  let exist = (v)=>Fav.find(x=>x.name===v)
+  let exist = (v)=>Fav.find(x=>x.title===v)
 
   return {
-    class: (name) => {
+    class: (title) => {
      
-      return exist(name)!==undefined ? "fa fa-heart red fav-icon " : "fa fa-heart fav-icon ";
+      return exist(title)!==undefined ? "fa fa-heart red fav-icon " : "fa fa-heart fav-icon ";
     }
   };
 };
 const dispatch = dispatch => {
   return {
-    addFav: ({name,img,pu,price,city}) => {
+    addFav: ({title,img,unity,price,city}) => {
       dispatch({
         type: "ADD_FAV",
-        fav:{name,img,pu,price,city}
+        fav:{title,img,unity,price,city}
       });
     }
   };

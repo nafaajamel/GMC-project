@@ -1,22 +1,119 @@
 import React, { Component } from "react";
 import {category} from '../Constants/data'
+import {getCity} from '../Constants/data'
+import axios from 'axios'
+import {connect} from 'react-redux'
+import FormData from 'form-data'
+const _ = require('lodash')
+
 class AdArray extends Component {
   constructor(props) {
     super(props);
     this.state = {
       addOrSave: "ajouter",
-      toggleForm: false
+      toggleForm: false,
+      title:'',
+      city:'',
+      price:'',
+      pu:'',
+      description:'',
+      _id:'',
+      img:[],
+      images:[],
+      category:'',
+      isAvaible:true
     };
   }
+
+  initState = ()=>{
+   this.setState({
+     owner:{},
+    addOrSave: "ajouter",
+    toggleForm: false,
+    title:'',
+    city:'',
+    price:'',
+    unity:'',
+    _id:'',
+    images:[],
+    description:'',
+    img:[],
+    category:'',
+    isAvaible:true,
+    adList:[]
+
+   })
+  }
+  
+componentDidMount(){
+  this.setState({
+    owner: Object.assign({},this.props.owner)
+  })
+
+
+  
+}
+
+addElement = () =>{
+const {title,city,price,img,unity,description,category,isAvaible } = this.state
+const owner = Object.assign({},this.state.owner)
+ 
+axios.post('/ads/add',{title,city,price,img,unity,description,category,isAvaible,owner}).then((res)=>{
+
+
+} )
+.catch(err=>console.log(err) )
+this.initState()
+
+  }
+
   edit = () => {
     this.setState({
       toggleForm: true,
-      addOrSave: "edit"
+      addOrSave: "edit",
+    
     });
   };
+
+  uploadImg(e) {
+    
+    const formData = new FormData()
+    formData.append('img', e.files[0], e.files[0].name)
+    axios.post('/fileup', formData)
+
+
+    let file = e.files[0];
+    this.setState({
+      img:  [...this.state.img,file.name ]
+    })
+   console.log(file)
+
+    let reader = new FileReader();
+    
+    
+    reader.onloadend = () => {
+      this.setState({
+        images:   [...this.state.images,reader.result],
+        
+      });
+    }
+
+    reader.readAsDataURL(file)
+    
+  }
+ 
+
+   
+  hundleChange = (e)=>{
+     this.setState({
+       [e.id]:e.value
+     })
+  }
+
   render() {
     return (
       <div className="user-page">
+      
         <div
           className={
             this.state.toggleForm ? "add-form show-form-ad" : "add-form"
@@ -33,30 +130,73 @@ class AdArray extends Component {
           <div className="insert-form ">
           <div className="row">
               <label for="img">images  :</label>
-              <input type="file" id="img" multiple />{" "}
-              <span className="tooltip">max 5 images </span>
+              <input 
+              id="img"
+              multiple
+             
+              accept="image/*"
+              onChange={(e)=>this.uploadImg(e.target)}
+              type="file" id="img"
+               
+               />{" "}
+              <span className="tooltip">max 5 images
+              
+               </span>
+               <div className="img-prev">{this.state.images.map(x=> <img width="30" height='30' src={x} />)}</div>
+
             </div>
             <div className="row">
               <label for="title">titre  :</label>
-              <input type="text" id="title" />{" "}
+              <input
+              id='title'
+
+              value={this.state.title}
+              onChange={(e)=>this.hundleChange(e.target) }
+              type="text" id="title" />{" "}
             </div>
             <div className="row">
               <label for="price">prix :</label>
-              <input type="number" id="price" />{" "}
+              <input 
+               id='price'
+               value={this.state.price}
+               onChange={(e)=>this.hundleChange(e.target) }
+              type="number" id="price" />{" "}
+            </div>
+           
+            <div className="row">
+             <label for="desciption">discription :</label>
+             <textarea id="description"
+             value={this.state.description}
+             onChange={(e)=>this.hundleChange(e.target)}
+             ></textarea>
             </div>
             <div className="row">
               <label for="category">categorie :</label>
-              <select id="category"> 
+              <select 
+              id="category"
+              value={this.state.category}
+              onChange={(e)=>this.hundleChange(e.target)}
+              > 
               <option>selectionnez une categorie</option>
               {category().map(x=> {
                   return <option value={x.name}>{x.name}</option>
               } )}
               </select>
+              </div>
+              <div className="row">
+              <label for="city">ville :</label>
+              <select value={this.state.city} id='city' onChange={(e)=>this.hundleChange(e.target)} >
+              {getCity().map(x=>{
+                return <option value={x}>{x}</option>
+              })}
+              </select>
               
             </div>
             <div className="row">
               <label for="unity">unité :</label>
-              <select id="unity">
+              <select value={this.state.unity} id="unity"
+              onChange={(e)=>this.hundleChange(e.target)}
+              >
               <option>par :</option>
               <option> heure</option>
               <option> ans</option>
@@ -67,7 +207,9 @@ class AdArray extends Component {
             </div>
             <div className="row">
               <label for="avaible">disponible :</label>
-              <select id="avaible">
+              <select value={this.state.isAvaible} id="isAvaible"
+              onChange={(e)=>this.hundleChange(e.target)}
+              >
               <option value='1'>oui</option>
               <option value="0">non</option>
              
@@ -75,13 +217,15 @@ class AdArray extends Component {
             </div>
             <div className="row">
               <div>
-                <button className="btn add">{this.state.addOrSave}</button>
+                <button className="btn add"
+                onClick={ ()=>this.addElement()} 
+                >{this.state.addOrSave}</button>
                 <button
                   className="btn cancel"
                   onClick={() =>
-                    this.setState({
-                      toggleForm: false
-                    })
+                    
+                      ()=>this.initState()
+
                   }
                 >
                   annuler
@@ -95,12 +239,9 @@ class AdArray extends Component {
             List of Users
             <button
               className="btn btn-primary"
-              onClick={() =>
-                this.setState({
-                  addOrSave: "ajouter",
-                  toggleForm: true
-                })
-              }
+              onClick={()=>this.setState({
+                toggleForm:true
+              }) }
             >
               ajouter
             </button>
@@ -160,4 +301,10 @@ class AdArray extends Component {
   }
 }
 
-export default AdArray;
+const state = ({Login})=>{
+  return{
+    owner:Login
+  }
+}
+
+export default connect(state)(AdArray);

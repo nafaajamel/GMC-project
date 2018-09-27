@@ -97,7 +97,7 @@ class UserArray extends Component {
             <table>
               <tr class="table-head">
                 
-                <td>nom && prénom</td>
+                <td>nom & prénom</td>
                 <td>télephone</td>
                 <td>e-mail</td>
                 <td>actions</td>
